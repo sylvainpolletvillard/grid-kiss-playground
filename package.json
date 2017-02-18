@@ -1,0 +1,37 @@
+{
+	"name": "grid-kiss-playground",
+	"version": "1.1.0",
+	"description": "Playground for postcss-grid-kiss",
+	"author": "Sylvain Pollet-Villard",
+	"license": "MIT",
+	"repository": "https://github.com/sylvainpolletvillard/grid-kiss-playground",
+	"keywords": [
+		"postcss",
+		"postcss-plugin",
+		"ascii-art",
+		"visual",
+		"css",
+		"grid",
+		"kiss",
+		"playground"
+	],
+	"scripts": {
+		"build": "webpack",
+		"watch": "webpack --watch",
+		"start": "http-server playground/ -o",
+		"lint": "eslint src --fix"
+	},
+	"engines": {
+		"node": ">=4.3.0"
+	},
+	"dependencies": {
+		"postcss": "^5.2.11",
+		"postcss-grid-kiss": "^1.1.0"
+	},
+	"devDependencies": {
+		"babili-webpack-plugin": "^0.0.10",
+		"eslint": "^3.15.0",
+		"http-server": "^0.9.0",
+		"webpack": "^2.2.1"
+	}
+}
