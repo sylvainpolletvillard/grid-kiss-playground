@@ -9,7 +9,7 @@ html, body {
 body {
 	display: grid;
 	grid-template-areas:
-		"header options"
+		"header header"
 		"input  output "
 		"html   demo   "
 		"footer footer "
@@ -18,7 +18,8 @@ body {
 	grid-template-columns: minmax(640px, max-content) 1fr;
 }
 
-header, .options, footer {
+header,
+footer {
 	background: rgb(237, 237, 237);
 	height: 48px;
 	line-height: 45px;
@@ -26,7 +27,7 @@ header, .options, footer {
 	box-sizing: border-box;
 }
 
-header, .options {
+header {
 	border-bottom: 1px solid rgb(191, 191, 191);
 }
 
@@ -45,12 +46,13 @@ header {
 	margin: 0;
 }
 
-header label {
+header > label {
 	margin-left: 1em;
 }
 
 header select {
 	font-size: 16px;
+	width: 320px;
 }
 
 h1, h2 {
@@ -71,6 +73,8 @@ h2 {
 aside.options {
 	grid-area: options;
 	text-align: right;
+	float: right;
+	box-sizing: border-box;
 }
 
 aside.options > * {
@@ -83,13 +87,17 @@ aside.options h2::after {
 
 aside.options ul {
 	list-style: none;
-	display: inline;
-	padding: 0.5em;
+	display: inline-block;
+	padding: 0;
 	margin: 0;
 }
 
 aside.options li {
 	display: inline-block;
+}
+
+aside.options input[type="checkbox"] {
+	vertical-align: text-bottom;
 }
 
 aside.options label {
@@ -185,14 +193,6 @@ pre {
 	header {
 		position: absolute;
 		left: 0;
-		right: 50%;
-		top: 0;
-		box-sizing: border-box;
-	}
-
-	aside.options {
-		position: absolute;
-		left: 50%;
 		right: 0;
 		top: 0;
 		box-sizing: border-box;
