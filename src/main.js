@@ -1,7 +1,7 @@
-/* global ace */
-import postcss from 'postcss';
-import gridkiss from 'postcss-grid-kiss';
+/* global ace, postcss, gridkiss */
 import presets from './presets';
+import { initEditors, setEditorsContent, getEditorsContent } from './editor';
+import { openOCR } from './ocr';
 
 let processor;
 
@@ -12,42 +12,26 @@ const
 	html           = document.querySelector("#html"),
 	optionsInputs  = [...document.querySelectorAll(".options input[type='checkbox']")],
 	presetSelector = document.querySelector("select.presets"),
-	cssEditor      = ace.edit(input),
-	htmlEditor     = ace.edit(html);
+	ocrButton    = document.querySelector("#ocr-button");
 
-initEditor(cssEditor, "css");
-initEditor(htmlEditor, "html");
-
-cssEditor.on("input", update);
-htmlEditor.on("input", update);
+ocrButton.addEventListener("click", openOCR);
 
 for (let option of optionsInputs) {
 	option.addEventListener("change", updateOptions);
 }
 
-presetSelector.innerHTML = presets.map((preset, index) => `<option value=${index}>${preset.name}</option>`);
-presetSelector.addEventListener("change", () => {
-	selectPreset(presets[presetSelector.value]);
-	update();
-});
-
-window.onload = function() {
-	if (demo.contentDocument.readyState === 'complete') {
-		init();
-	} else {
-		demo.onload = init;
-	}
-}
-
 function init(){
-	selectPreset(presets[0]);
+	initEditors();
+
+	presetSelector.innerHTML = presets.map((preset, index) => `<option value=${index}>${preset.name}</option>`);
+	presetSelector.addEventListener("change", () => {
+		setEditorsContent(presets[presetSelector.value]);
+		update();
+	});
+
+	setEditorsContent(presets[0]);
 	updateProcessor();
 	update();
-}
-
-function selectPreset(preset){
-	cssEditor.setValue(preset.css, -1);
-	htmlEditor.setValue(preset.html, -1);
 }
 
 function updateOptions(){
@@ -67,9 +51,10 @@ function updateProcessor(){
 	update();
 }
 
-function update(){
-	demo.contentDocument.body.innerHTML = htmlEditor.getValue();
-	processor.process(cssEditor.getValue())
+export function update(){
+	let { html, css } = getEditorsContent();
+	demo.contentDocument.body.innerHTML = html;
+	processor.process(css)
 		.then(result => {
 			output.textContent = result.css;
 			const warnings = result.warnings().map(w => `<p class='warning'>${w.toString()}</p>`)
@@ -85,12 +70,10 @@ function update(){
 		})
 }
 
-function initEditor(editor, mode){
-	editor.setTheme("ace/theme/textmate");
-	editor.getSession().setMode(`ace/mode/${mode}`);
-	editor.getSession().setOption("useWorker", false); // disable syntax checking since it is not customizable
-	editor.setShowPrintMargin(false);
-	editor.setHighlightActiveLine(false);
-	editor.setFontSize(16);
-	editor.$blockScrolling = Infinity;
+window.onload = function() {
+	if (demo.contentDocument.readyState === 'complete') {
+		init();
+	} else {
+		demo.onload = init;
+	}
 }

@@ -184,6 +184,32 @@ pre {
 	box-sizing: border-box;
 }
 
+#ocr-container {
+	position: fixed;
+	background: white;
+	left: 5vw;
+	right: 5vw;
+	top: 5vh;
+	bottom: 5vh;
+	text-align: center;
+	border: 1px solid rgba(0,0,0,0.5);
+	z-index: 999;
+	box-shadow: 0 0 50px 25px rgba(0,0,0,0.5);
+	padding: 1rem;
+	overflow: auto;
+}
+
+#ocr-container > h1,
+#ocr-container > p {
+	display: block;
+	margin: 1em auto;
+}
+
+#ocr-container textarea {
+	width: 640px;
+	height: 480px;
+}
+
 @supports not (grid-template-areas:"test") {
 	body {
 		position: relative;

@@ -13,6 +13,7 @@
 		Preset examples:
 		<select name="presets" class="presets"></select>
 	</label>
+	<button id="ocr-button">OCR</button>
 
 	<aside class="options">
 		<h2>Options</h2>
@@ -49,8 +50,26 @@
 	<p><a href="https://github.com/sylvainpolletvillard/postcss-grid-kiss" target="_blank">grid-kiss PostCSS plugin v1.1.0</a> by Sylvain Pollet-Villard</p>
 </footer>
 
+<div id="ocr-container" hidden>
+	<h1>Optical Character Recognition with Tesseract.js</h1>
+
+	<video id="camera-video"></video>
+	<canvas id="camera-photo"></canvas>
+	<br>
+	<button id="photo-btn">Take a picture</button>
+	<br>
+	<progress></progress>
+	<br>
+	<p id="ocr-status"></p>
+	<textarea></textarea>
+	<br>
+	<button id="validate-ocr-btn">Validate this grid</button>
+</div>
+
 <script defer src="lib/ace/ace.js"></script>
-<script defer src="build/bundle.js"></script>
+<script defer src="build/libs.bundle.js"></script>
+<script defer src="build/main.bundle.js"></script>
+<script defer src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html>
