@@ -238,6 +238,7 @@ const ocrContainer   = document.querySelector("#ocr-container"),
       cameraVideo    = ocrContainer.querySelector('#camera-video'),
       cameraPhoto    = ocrContainer.querySelector('#camera-photo'),
       photoButton    = ocrContainer.querySelector('#photo-btn'),
+      photoInput     = ocrContainer.querySelector('#photo-input'),
       validateButton = ocrContainer.querySelector('#validate-ocr-btn');
 
 cameraVideo.addEventListener('canplay', function(){
@@ -253,6 +254,8 @@ photoButton.addEventListener('click', function(ev){
 	takePicture();
 	ev.preventDefault();
 }, false);
+
+photoInput.addEventListener('change', ev => readOCR(photoInput.files[0]));
 
 validateButton.addEventListener('click', ev => {
 	ocrContainer.hidden = true;
@@ -282,29 +285,31 @@ function takePicture() {
 	cameraPhoto.width = width;
 	cameraPhoto.height = height;
 	cameraPhoto.getContext('2d').drawImage(cameraVideo, 0, 0, width, height);
-	readOCR();
+	readOCR(cameraPhoto);
 }
 
-function readOCR(){
+function readOCR(source){
 	ocrProgress.value = 0;
 	ocrMessage.textContent = "Please wait...";
 	ocrContainer.querySelector("p").textContent = "Please wait...";
 
-	Tesseract.recognize(cameraPhoto)
-		.progress(({ status, progress }) => {
-			console.log('progress', status, progress);
-			ocrMessage.textContent = status;
-			if(Number.isFinite(progress)){ ocrProgress.value = progress; }
-		})
-		.then((result) => {
-			console.log('result', result)
-			let output = result.text
-				.split('\n')
-				.map(line => `\n\t"${line}"`)
-				.join('\n');
-			ocrMessage.textContent = "Finished !";
-			ocrOutput.value = output;
-		})
+	Tesseract.recognize(source, {
+		tessedit_char_whitelist: "abcdefghijklmnopqrstuvwxyz +-*/()<>%┌┐└┘│─"
+	})
+	.progress(({ status, progress }) => {
+		console.log('progress', status, progress);
+		ocrMessage.textContent = status;
+		if(Number.isFinite(progress)){ ocrProgress.value = progress; }
+	})
+	.then((result) => {
+		console.log('result', result)
+		let output = result.text
+			.split('\n')
+			.map(line => `\n\t"${line}"`)
+			.join('\n');
+		ocrMessage.textContent = "Finished !";
+		ocrOutput.value = output;
+	})
 }
 
 /***/ }),
