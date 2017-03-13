@@ -236,6 +236,85 @@ header { background: yellow }
 	},
 
 	{
+		name: "Calculator with :nth-of-type helpers",
+		css: format`
+#calc {
+	grid-kiss:
+	"+----------------------------------------------------------------+"
+	"|                            output                              |"
+	"+----------------------------------------------------------------+"
+	"                                                                  "
+	"+------------+   +------------+   +------------+   +-------------+"
+	"|    .ac     |   |   .sign    |   |  .percent  |   |   .divide   |"
+	"+------------+   +------------+   +------------+   +-------------+"
+	"                                                                  "
+	"+------------+   +------------+   +------------+   +-------------+"
+	"|     :7     |   |     :8     |   |     :9     |   |  .multiply  |"
+	"+------------+   +------------+   +------------+   +-------------+"
+	"                                                                  "
+	"+------------+   +------------+   +------------+   +-------------+"
+	"|     :4     |   |     :5     |   |     :6     |   |   .minus    |"
+	"+------------+   +------------+   +------------+   +-------------+"
+	"                                                                  "
+	"+------------+   +------------+   +------------+   +-------------+"
+	"|     :1     |   |     :2     |   |     :3     |   |   .plus     |"
+	"+------------+   +------------+   +------------+   +-------------+"
+	"                                                                  "
+	"+-----------------------------+   +------------+   +-------------+"
+	"|           .zero             |   |   .point   |   |   .equals   |"
+	"+-----------------------------+   +------------+   +-------------+"
+}
+
+output { 
+    background-color: #333;
+	color: white;
+	margin: 0;
+	padding: 1rem;
+	font-size: 2rem;
+	text-align: right;
+}
+
+button {
+	font-size: 2rem;
+	border: 1px solid #333;
+	background-color: #efefef;
+}
+
+.ac, .sign, .percent {
+	background-color: #ccc;
+}
+
+button.operation {
+	background-color: orange;
+}
+`,
+		html: format`
+<div id="calc">
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button class="zero">0</button>
+    <button class="point">.</button>
+    <button class="ac">AC</button>
+    <button class="sign">+/-</button>
+    <button class="percent">%</button>
+    <button class="divide operation">/</button>
+    <button class="multiply operation">X</button>
+    <button class="minus operation">-</button>
+    <button class="plus operation">+</button>
+    <button class="equals operation">=</button>
+    <output>0</output>
+</div>
+`
+	},
+
+	{
 		name: "Layout with gaps",
 		css: format`
 body {	

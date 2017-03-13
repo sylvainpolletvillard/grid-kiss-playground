@@ -18,7 +18,7 @@
 	"scripts": {
 		"build": "webpack",
 		"watch": "webpack --watch",
-		"start": "http-server playground/ -o",
+		"start": "serve",
 		"lint": "eslint src --fix"
 	},
 	"engines": {
@@ -26,12 +26,12 @@
 	},
 	"dependencies": {
 		"postcss": "^5.2.11",
-		"postcss-grid-kiss": "^1.1.0"
+		"postcss-grid-kiss": "^1.2.0"
 	},
 	"devDependencies": {
 		"babili-webpack-plugin": "^0.0.10",
 		"eslint": "^3.15.0",
-		"http-server": "^0.9.0",
+		"serve": "^5.0.3",
 		"webpack": "^2.2.1"
 	}
 }

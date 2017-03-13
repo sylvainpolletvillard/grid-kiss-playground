@@ -15,7 +15,7 @@ body {
 		"footer footer "
 		"hidden hidden ";
 	grid-template-rows: 48px 40vh 1fr 48px 0;
-	grid-template-columns: minmax(640px, max-content) 1fr;
+	grid-template-columns: minmax(800px, max-content) 1fr;
 }
 
 header,
@@ -165,7 +165,7 @@ footer aside {
 }
 
 footer aside > * {
-	display: inline-blocki;
+	display: inline-block;
 	vertical-align: middle;
 }
 
