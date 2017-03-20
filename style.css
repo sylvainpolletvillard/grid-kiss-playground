@@ -136,7 +136,7 @@ aside.options label {
 #output .warning {
 	color: darkorange;
 	font-weight: bold;
-
+	margin: 0;
 }
 
 #html-container {

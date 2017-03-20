@@ -22,7 +22,10 @@ cssEditor.on("input", update);
 htmlEditor.on("input", update);
 
 for (let option of optionsInputs) {
-	option.addEventListener("change", updateOptions);
+	option.addEventListener("change", () => {
+		changeOptions();
+		update();
+	});
 }
 
 presetSelector.innerHTML = presets.map((preset, index) => `<option value=${index}>${preset.name}</option>`);
@@ -39,42 +42,37 @@ window.onload = function() {
 	}
 }
 
-function init(){
-	selectPreset(presets[0]);
-	updateProcessor();
+function init() {
+	const presetByHash = presets.find(p => p.hash === window.location.hash.slice(1));
+	selectPreset(presetByHash || presets[0]);
+	changeOptions();
 	update();
+	initGithubButtons();
 }
 
-function selectPreset(preset){
+function selectPreset(preset) {
 	cssEditor.setValue(preset.css, -1);
 	htmlEditor.setValue(preset.html, -1);
+	window.location.hash = preset.hash;
+	presetSelector.value = presets.indexOf(preset);
 }
 
-function updateOptions(){
-	const options = {};
-	for(let checkbox of optionsInputs){
-		options[checkbox.parentElement.textContent.trim()] = checkbox;
-	}
-	updateProcessor();
-}
-
-function updateProcessor(){
+function changeOptions() {
 	const options = {};
 	for(let checkbox of optionsInputs){
 		options[checkbox.parentElement.textContent.trim()] = checkbox.checked;
 	}
 	processor = postcss([ gridkiss(options) ]);
-	update();
 }
 
-function update(){
+function update() {
 	demo.contentDocument.body.innerHTML = htmlEditor.getValue();
 	processor.process(cssEditor.getValue())
 		.then(result => {
 			output.textContent = result.css;
 			const warnings = result.warnings().map(w => `<p class='warning'>${w.toString()}</p>`)
 			if(warnings && warnings.length > 0){
-				output.innerHTML = warnings.join('\n') + output.innerHTML;
+				output.innerHTML = `/*\n${warnings.join('\n')}*/\n\n${output.innerHTML}`;
 			}
 			setTimeout(() => {
 				demo.contentDocument.querySelector("#css_injected").textContent = output.textContent;
@@ -93,4 +91,10 @@ function initEditor(editor, mode){
 	editor.setHighlightActiveLine(false);
 	editor.setFontSize(16);
 	editor.$blockScrolling = Infinity;
+}
+
+function initGithubButtons(){
+	const script = document.createElement("script");
+	script.src = "https://buttons.github.io/buttons.js";
+	document.body.appendChild(script);
 }
