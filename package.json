@@ -16,9 +16,9 @@
 		"playground"
 	],
 	"scripts": {
-		"build": "webpack",
+		"build": "webpack -p",
 		"watch": "webpack --watch",
-		"start": "serve",
+		"serve": "serve",
 		"lint": "eslint src --fix"
 	},
 	"engines": {
@@ -29,9 +29,16 @@
 		"postcss-grid-kiss": "^1.2.0"
 	},
 	"devDependencies": {
-		"babili-webpack-plugin": "^0.0.10",
+		"babel-core": "^6.24.0",
+		"babel-loader": "^6.4.1",
+		"babel-preset-env": "^1.2.2",
 		"eslint": "^3.15.0",
 		"serve": "^5.0.3",
 		"webpack": "^2.2.1"
-	}
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"ie 11"
+	]
 }

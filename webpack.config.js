@@ -1,5 +1,4 @@
 const path = require("path");
-const BabiliPlugin = require("babili-webpack-plugin");
 
 module.exports = {
 	entry: "./src/main.js",
@@ -10,9 +9,17 @@ module.exports = {
 	node: {
 		fs: "empty"
 	},
-	plugins: [
-		new BabiliPlugin()
-	],
+	module: {
+		loaders: [
+			{
+				test: /\.js$/,
+				loader: 'babel-loader',
+				query: {
+					presets: ['env']
+				}
+			}
+		]
+	},
 	resolve: {
 		alias: {
 			browserslist: path.resolve(__dirname, 'src/mock/browserslist'),
