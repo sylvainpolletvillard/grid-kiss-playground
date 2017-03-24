@@ -23,7 +23,8 @@ module.exports = {
 	resolve: {
 		alias: {
 			browserslist: path.resolve(__dirname, 'src/mock/browserslist'),
-			"caniuse-api": path.resolve(__dirname, 'src/mock/caniuse-api.js')
+			"caniuse-api": path.resolve(__dirname, 'src/mock/caniuse-api.js'),
+			"js-base64": path.resolve(__dirname, 'src/mock/js-base64-pr-46.js')
 		}
 	}
 }
