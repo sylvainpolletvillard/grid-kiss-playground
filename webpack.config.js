@@ -6,9 +6,6 @@ module.exports = {
 		path: path.resolve(__dirname, 'build'),
 		filename: "bundle.js"
 	},
-	node: {
-		fs: "empty"
-	},
 	module: {
 		loaders: [
 			{
@@ -23,8 +20,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			browserslist: path.resolve(__dirname, 'src/mock/browserslist'),
-			"caniuse-api": path.resolve(__dirname, 'src/mock/caniuse-api.js'),
-			"js-base64": path.resolve(__dirname, 'src/mock/js-base64-pr-46.js')
+			"caniuse-api": path.resolve(__dirname, 'src/mock/caniuse-api.js')
 		}
 	}
 }
