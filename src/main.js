@@ -8,7 +8,7 @@ let processor;
 const
 	input          = document.querySelector("#input"),
 	output         = document.querySelector("#output"),
-	demo           = document.querySelector("#demo"),
+	demo           = document.querySelector("#demo-frame"),
 	html           = document.querySelector("#html"),
 	optionsInputs  = [...document.querySelectorAll(".options input[type='checkbox']")],
 	presetSelector = document.querySelector("select.presets"),
