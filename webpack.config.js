@@ -22,5 +22,8 @@ module.exports = {
 			browserslist: path.resolve(__dirname, 'src/mock/browserslist'),
 			"caniuse-api": path.resolve(__dirname, 'src/mock/caniuse-api.js')
 		}
+	},
+	node: {
+		fs: 'empty'
 	}
 }

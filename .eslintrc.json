@@ -9,5 +9,9 @@
     "rules": {
         "indent": [ "error", "tab", { "SwitchCase": 1 } ],
         "no-mixed-spaces-and-tabs": ["error", "smart-tabs"]
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
     }
 }

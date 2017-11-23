@@ -115,6 +115,7 @@ aside.options label {
 	overflow: auto;
 	background-color: #f8f8f8;
 	color: #999;
+	padding-top: 3em;
 }
 
 #output::before {
