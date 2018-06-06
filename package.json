@@ -22,18 +22,18 @@
 		"lint": "eslint src --fix"
 	},
 	"engines": {
-		"node": ">=4.3.0"
+		"node": ">=6.0.0"
 	},
 	"devDependencies": {
-		"babel-core": "^6.26.0",
-		"babel-loader": "^7.1.2",
-		"babel-preset-env": "^1.6.1",
-		"eslint": "^4.11.0",
-		"postcss": "^6.0.14",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^7.1.4",
+		"babel-preset-env": "^1.7.0",
+		"eslint": "^4.19.1",
+		"postcss": "^6.0.22",
 		"postcss-grid-kiss": "^1.4.2",
-		"serve": "^6.4.1",
+		"serve": "^8.0.0",
 		"webpack": "^4.0.0",
-		"webpack-cli": "^2.0.9"
+		"webpack-cli": "^3.0.2"
 	},
 	"browserslist": [
 		"> 1%",
