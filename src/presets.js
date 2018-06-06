@@ -211,19 +211,19 @@ body {
     "| .bloc2 |  | .bloc3 |  | .bloc4 |       "
     "+--------+  +--------+  +--------+       "
   }
-}	
-	
+}
+
 header { background: yellow }
 .bloc1 { background: blue }
 .bloc2 { background: green }
 .bloc3 { background: purple }
-.bloc4 { background: chocolate }	
-	
+.bloc4 { background: chocolate }
+
 .bloc {
 	text-align:center;
 	color: white;
 	font-size: 48px;
-}	
+}
 `,
 
 		html: format`
@@ -245,19 +245,19 @@ header { background: yellow }
 	grid-kiss:
 	"+-----------------------------------------------------+"
 	"|                       output                        |"
-	"+-----------------------------------------------------+"	
+	"+-----------------------------------------------------+"
 	"+----------+  +----------+  +----------+  +-----------+"
 	"|   .ac    |  |  .sign   |  | .percent |  |  .divide  |"
-	"+----------+  +----------+  +----------+  +-----------+"	
+	"+----------+  +----------+  +----------+  +-----------+"
 	"+----------+  +----------+  +----------+  +-----------+"
 	"|    :7    |  |    :8    |  |    :9    |  | .multiply |"
-	"+----------+  +----------+  +----------+  +-----------+"	
+	"+----------+  +----------+  +----------+  +-----------+"
 	"+----------+  +----------+  +----------+  +-----------+"
 	"|    :4    |  |    :5    |  |    :6    |  |  .minus   |"
-	"+----------+  +----------+  +----------+  +-----------+"	
+	"+----------+  +----------+  +----------+  +-----------+"
 	"+----------+  +----------+  +----------+  +-----------+"
 	"|    :1    |  |    :2    |  |    :3    |  |  .plus    |"
-	"+----------+  +----------+  +----------+  +-----------+"	
+	"+----------+  +----------+  +----------+  +-----------+"
 	"+------------------------+  +----------+  +-----------+"
 	"|         .zero          |  |  .point  |  |  .equals  |"
 	"+------------------------+  +----------+  +-----------+"
@@ -316,17 +316,17 @@ button.operation {
 		name: "Layout with gaps",
 		hash: "gaps",
 		css: format`
-body {	
+body {
 	grid-kiss:
 	"                                               "
 	"    +-----+      +-----+      +-----+  ----    "
 	"    | .nw |      | .n  |      | .ne | 100px    "
-	"    +-----+      +-----+      +-----+  ----    "		   
-	"                                       50px    "		   
+	"    +-----+      +-----+      +-----+  ----    "
+	"                                       50px    "
 	"    +-----+      +-----+      +-----+  ----    "
 	"    | .w  |      |     |      | .e  | 100px    "
 	"    +-----+      +-----+      +-----+  ----    "
-	"                                       50px    "		   
+	"                                       50px    "
 	"    +-----+      +-----+      +-----+  ----    "
 	"    | .sw |      | .s  |      | .se | 100px    "
 	"    +-----+      +-----+      +-----+  ----    "
@@ -556,26 +556,29 @@ div {
 
 .grid {
 	background-color: #CCC;
-	width: 250px;
-	height: 250px;
-	border: 2px dotted black;
+	width: 300px;
+	height: 300px;
 }
 
 .grid-row {
 	background-color: #CCC;
 	width: 400px;
 	height: 100px;
-	border: 2px dotted black;
+}
+
+.grid, .grid-row {
+    background-size: 100px 100px;
+    background-image: linear-gradient(135deg, #ddd, #eee);
 }
 
 a,b,c,d,e,f,g,h,i {
-	display: block;		
+	display: block;
 	box-sizing: border-box;
 	font-style: normal;
 	font-weight: normal;
 	text-align:center;
 	background-color: #EEE;
-	border: 1px solid black;	
+	border: 1px solid black;
 	min-width: 40px;
 	min-height: 40px;
 }
