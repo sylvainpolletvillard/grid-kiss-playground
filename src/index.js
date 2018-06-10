@@ -1,7 +1,10 @@
 /* global ace */
-import postcss from 'postcss';
-import gridkiss from 'postcss-grid-kiss';
-import presets from './presets';
+require("babel-polyfill");
+
+const
+	postcss  = require('postcss'),
+	gridkiss = require('postcss-grid-kiss'),
+	presets  = require('./presets');
 
 let processor;
 

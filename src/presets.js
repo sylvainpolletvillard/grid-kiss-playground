@@ -179,7 +179,7 @@ body {
     "+----------+      "    
 }     
 
-@media (min-width:640px){
+@media all and (min-width:640px){
   body {
     grid-kiss:
     "+----------------------------+      "
@@ -196,7 +196,7 @@ body {
   }
 }
 
-@media (min-width: 960px){
+@media all and (min-width: 960px){
   body {
     grid-kiss:
     "+--------------------------------+       "
@@ -739,4 +739,4 @@ when there is one space row at the beginning and at the end, and two space rows 
 
 ];
 
-export default presets;
+module.exports = presets;

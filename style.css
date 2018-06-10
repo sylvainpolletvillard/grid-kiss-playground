@@ -190,6 +190,70 @@ pre {
 	box-sizing: border-box;
 }
 
+@media screen and (min-width:0\0){
+	body {
+		position: relative;
+		display: block
+	}
+
+	header {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		box-sizing: border-box;
+	}
+
+	#input-container {
+		position: absolute;
+		left: 0;
+		top: 48px;
+		width: 640px;
+		height: calc(50% - 48px);
+		overflow: auto;
+		box-sizing: border-box;
+	}
+
+	#output {
+		position: absolute;
+		left: 640px;
+		right: 0;
+		top: 48px;
+		height: calc(50% - 48px);
+		overflow: auto;
+		box-sizing: border-box;
+	}
+
+	#html-container {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 640px;
+		height: calc(50% - 48px);
+		overflow: auto;
+		box-sizing: border-box;
+	}
+
+	#demo {
+		position: absolute;
+		top: 50%;
+		left: 640px;
+		right: 0;
+		height: calc(50% - 48px);
+		width: calc(100% - 640px);
+		box-sizing: border-box;
+	}
+
+	footer {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+}
+
 @supports not (grid-template-areas:"test") {
 	body {
 		position: relative;
