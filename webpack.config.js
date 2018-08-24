@@ -8,7 +8,7 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					query: {
-						presets: ['env']
+						presets: ['@babel/preset-env']
 					}
 				}
 			}
@@ -17,7 +17,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			browserslist: path.resolve(__dirname, 'src/mock/browserslist'),
-			"caniuse-api": path.resolve(__dirname, 'src/mock/caniuse-api.js')
+			"caniuse-lite": path.resolve(__dirname, 'src/mock/caniuse-lite.js')
 		}
 	},
 	node: {
