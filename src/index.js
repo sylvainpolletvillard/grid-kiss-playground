@@ -1,22 +1,22 @@
 /* global ace */
-require("babel-polyfill");
+require("@babel/polyfill");
 
 const
-	postcss  = require('postcss'),
+	postcss = require('postcss'),
 	gridkiss = require('postcss-grid-kiss'),
-	presets  = require('./presets');
+	presets = require('./presets');
 
 let processor;
 
 const
-	input          = document.querySelector("#input"),
-	output         = document.querySelector("#output"),
-	demo           = document.querySelector("#demo-frame"),
-	html           = document.querySelector("#html"),
-	optionsInputs  = [...document.querySelectorAll(".options input[type='checkbox']")],
+	input = document.querySelector("#input"),
+	output = document.querySelector("#output"),
+	demo = document.querySelector("#demo-frame"),
+	html = document.querySelector("#html"),
+	optionsInputs = [...document.querySelectorAll(".options input[type='checkbox']")],
 	presetSelector = document.querySelector("select.presets"),
-	cssEditor      = ace.edit(input),
-	htmlEditor     = ace.edit(html);
+	cssEditor = ace.edit(input),
+	htmlEditor = ace.edit(html);
 
 initEditor(cssEditor, "css");
 initEditor(htmlEditor, "html");
@@ -37,7 +37,7 @@ presetSelector.addEventListener("change", () => {
 	update();
 });
 
-window.onload = function() {
+window.onload = function () {
 	if (demo.contentDocument.readyState === 'complete') {
 		init();
 	} else {
@@ -62,10 +62,10 @@ function selectPreset(preset) {
 
 function changeOptions() {
 	const options = {};
-	for(let checkbox of optionsInputs){
+	for (let checkbox of optionsInputs) {
 		options[checkbox.parentElement.textContent.trim()] = checkbox.checked;
 	}
-	processor = postcss([ gridkiss(options) ]);
+	processor = postcss([gridkiss(options)]);
 }
 
 function update() {
@@ -74,7 +74,7 @@ function update() {
 		.then(result => {
 			output.textContent = result.css;
 			const warnings = result.warnings().map(w => `<p class='warning'>${w.toString()}</p>`)
-			if(warnings && warnings.length > 0){
+			if (warnings && warnings.length > 0) {
 				output.innerHTML = `/*\n${warnings.join('\n')}*/\n\n${output.innerHTML}`;
 			}
 			setTimeout(() => {
@@ -86,7 +86,7 @@ function update() {
 		})
 }
 
-function initEditor(editor, mode){
+function initEditor(editor, mode) {
 	editor.setTheme("ace/theme/textmate");
 	editor.getSession().setMode(`ace/mode/${mode}`);
 	editor.getSession().setOption("useWorker", false); // disable syntax checking since it is not customizable
@@ -96,7 +96,7 @@ function initEditor(editor, mode){
 	editor.$blockScrolling = Infinity;
 }
 
-function initGithubButtons(){
+function initGithubButtons() {
 	const script = document.createElement("script");
 	script.src = "https://buttons.github.io/buttons.js";
 	document.body.appendChild(script);
