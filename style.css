@@ -173,6 +173,7 @@ footer aside {
 footer aside > * {
 	display: inline-block;
 	vertical-align: middle;
+	line-height: 1;
 }
 
 textarea {
