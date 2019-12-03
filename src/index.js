@@ -73,16 +73,24 @@ function update() {
 	processor.process(cssEditor.getValue())
 		.then(result => {
 			output.textContent = result.css;
-			const warnings = result.warnings().map(w => `<p class='warning'>${w.toString()}</p>`)
+			const warnings = result.warnings().map(w => {
+				let p = document.createElement("p")
+				p.className = "warning"
+				p.textContent = w.toString();
+			})
 			if (warnings && warnings.length > 0) {
-				output.innerHTML = `/*\n${warnings.join('\n')}*/\n\n${output.innerHTML}`;
+				warnings.forEach(p => output.prepend(p))
 			}
+
 			setTimeout(() => {
 				demo.contentDocument.querySelector("#css_injected").textContent = output.textContent;
 			}, 10);
 		})
 		.catch(error => {
-			output.innerHTML = `<p class='error'>${error.stack}</p>`
+			let p = document.createElement("p")
+			p.className = "error"
+			p.textContent = error.stack;
+			output.prepend(p)
 		})
 }
 

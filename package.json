@@ -1,6 +1,6 @@
 {
 	"name": "grid-kiss-playground",
-	"version": "2.1.4",
+	"version": "2.3.0",
 	"description": "Playground for postcss-grid-kiss",
 	"author": "Sylvain Pollet-Villard",
 	"license": "MIT",
@@ -25,10 +25,10 @@
 		"node": ">=6.0.0"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.6.4",
-		"@babel/preset-env": "^7.6.3",
+		"@babel/core": "^7.7.4",
+		"@babel/preset-env": "^7.7.4",
 		"babel-loader": "^8.0.6",
-		"eslint": "^6.6.0",
+		"eslint": "^6.7.2",
 		"serve": "^11.2.0",
 		"webpack": "^4.41.2",
 		"webpack-cli": "^3.3.10"
@@ -39,8 +39,8 @@
 		"ie 11"
 	],
 	"dependencies": {
-		"@babel/polyfill": "^7.6.0",
-		"postcss": "^7.0.21",
+		"@babel/polyfill": "^7.7.0",
+		"postcss": "^7.0.23",
 		"postcss-grid-kiss": "^2.3.0"
 	}
 }
