@@ -29,7 +29,7 @@
 		"@babel/preset-env": "^7.11.5",
 		"babel-loader": "^8.1.0",
 		"eslint": "^7.10.0",
-		"serve": "^11.3.2",
+		"serve": "^14.1.1",
 		"webpack": "^4.44.2",
 		"webpack-cli": "^3.3.12"
 	},
